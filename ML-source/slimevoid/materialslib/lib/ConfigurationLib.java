@@ -9,24 +9,23 @@ import net.minecraftforge.common.Configuration;
 
 public class ConfigurationLib {
 	private static Configuration	configuration;
-	
+
 	private static String[]			baseBlockIdsNDmgs;
 
 	public static void CommonConfig(File suggestedConfigurationFile) {
 		configuration = new Configuration(suggestedConfigurationFile);
 		configuration.load();
-		
+
 		baseBlockIdsNDmgs = configuration.get(	Configuration.CATEGORY_GENERAL,
 												"BaseBlockList",
-												new String[] {
-														"44-Smooth Stone" },
+												new String[] { "44-Smooth Stone" },
 												"Data to generate custom Blocks with the format BaseBlockID<_DMG-Friendly Prefix>. "
 														+ "\nexample 35_14-Red Wool will create a slope, slanted corner, and oblic slope blocks"
 														+ "\nwith the texture based on the blockid 35 with damage 14, Damage is optional if 0"
 														+ "\ndisplay names will use the Friendly prefix given if non is specified then a name"
 														+ "\nwill be assigned based on the firendly name of the base block recomended to give a"
 														+ "\nFriendly Prefix").getStringList();
-		
+
 		configuration.save();
 	}
 
@@ -51,8 +50,9 @@ public class ConfigurationLib {
 	public static void reInitMaterials() {
 		initMaterials();
 		try {
-			//FMLCommonHandler.instance().updateResourcePackList();
-			StringTranslate.getInstance().setLanguage(StringTranslate.getInstance().currentLanguage, true);
+			// FMLCommonHandler.instance().updateResourcePackList();
+			StringTranslate.getInstance().setLanguage(	StringTranslate.getInstance().currentLanguage,
+														true);
 		} catch (Exception ex) {
 		}
 	}

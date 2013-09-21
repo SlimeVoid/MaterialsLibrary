@@ -29,10 +29,10 @@ public class SlimevoidMaterials {
 	public static void MaterialsPostInit(FMLPostInitializationEvent event) {
 		ConfigurationLib.reInitMaterials();
 	}
-	
+
 	@ServerStarting
 	public void registerCommand(FMLServerStartingEvent event) {
-		//1.6.2 Only command
-		//event.registerServerCommand(new ReInitMatsCommand());
+		// 1.6.2 Only command
+		// event.registerServerCommand(new ReInitMatsCommand());
 	}
 }

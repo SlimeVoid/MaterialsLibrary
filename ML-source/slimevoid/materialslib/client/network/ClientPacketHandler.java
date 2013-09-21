@@ -23,16 +23,16 @@ public class ClientPacketHandler implements IPacketHandler {
 
 	public static void registerPacketHandler(int packetID, SubPacketHandler handler) {
 		if (clientHandlers.containsKey(packetID)) {
-			LoggerSlimevoidLib
-					.getInstance(Logger.filterClassName(ClientPacketHandler.class
-							.toString()))
-					.write(	false,
-							"PacketID [" + packetID + "] already registered.",
-							Logger.LogLevel.ERROR);
-			throw new RuntimeException(
-					"PacketID [" + packetID + "] already registered.");
+			LoggerSlimevoidLib.getInstance(Logger.filterClassName(ClientPacketHandler.class.toString())).write(	false,
+																												"PacketID ["
+																														+ packetID
+																														+ "] already registered.",
+																												Logger.LogLevel.ERROR);
+			throw new RuntimeException("PacketID [" + packetID
+										+ "] already registered.");
 		}
-		clientHandlers.put(packetID, handler);
+		clientHandlers.put(	packetID,
+							handler);
 	}
 
 	/**
@@ -43,25 +43,26 @@ public class ClientPacketHandler implements IPacketHandler {
 	 */
 	public static SubPacketHandler getPacketHandler(int packetID) {
 		if (!clientHandlers.containsKey(packetID)) {
-			LoggerSlimevoidLib
-					.getInstance(Logger.filterClassName(ClientPacketHandler.class
-							.toString()))
-					.write(	false,
-							"Tried to get a Packet Handler for ID: " + packetID + " that has not been registered.",
-							Logger.LogLevel.WARNING);
-			throw new RuntimeException(
-					"Tried to get a Packet Handler for ID: " + packetID + " that has not been registered.");
+			LoggerSlimevoidLib.getInstance(Logger.filterClassName(ClientPacketHandler.class.toString())).write(	false,
+																												"Tried to get a Packet Handler for ID: "
+																														+ packetID
+																														+ " that has not been registered.",
+																												Logger.LogLevel.WARNING);
+			throw new RuntimeException("Tried to get a Packet Handler for ID: "
+										+ packetID
+										+ " that has not been registered.");
 		}
 		return clientHandlers.get(packetID);
 	}
 
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
-		DataInputStream data = new DataInputStream(new ByteArrayInputStream(
-				packet.data));
+		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
 		try {
 			int packetID = data.read();
-			getPacketHandler(packetID).onPacketData(manager, packet, player);
+			getPacketHandler(packetID).onPacketData(manager,
+													packet,
+													player);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

@@ -86,7 +86,9 @@ public class CommonProxy implements ICommonProxy {
 
 	@Override
 	public void playerLoggedIn(Player player, NetHandler netHandler, INetworkManager manager) {
-		PacketLib.sendMaterialList(player, netHandler, manager);
+		PacketLib.sendMaterialList(	player,
+									netHandler,
+									manager);
 	}
 
 	@Override

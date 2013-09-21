@@ -21,7 +21,8 @@ public class PacketMaterialList extends PacketUpdate {
 
 	private void setMaterialList(String[] materialList) {
 		for (int i = 0; i < materialList.length; i++) {
-			this.payload.setStringPayload(i, materialList[i]);
+			this.payload.setStringPayload(	i,
+											materialList[i]);
 		}
 	}
 
