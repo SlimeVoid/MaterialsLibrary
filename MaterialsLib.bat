@@ -6,31 +6,31 @@ set packagedir=%programdir%\Packages
 set forgedir=%programdir%\Forge
 set fmldir=%forgedir%\fml
 set mcpdir=%forgedir%\mcp
-set littleblocks=%repodir%\LittleBlocks-FML
+set matlib=%repodir%\MaterialsLibrary
 set slimelib=%repodir%\SlimevoidLibrary
 cd %mcpdir%
 
-if not exist %slimelib% GOTO :LBFAIL
-if exist %littleblocks% GOTO :LITTLEBLOCKS
-GOTO :LBFAIL
+if not exist %slimelib% GOTO :MLFAIL
+if exist %matlib% GOTO :MATERIALSLIB
+GOTO :MLFAIL
 
-:LITTLEBLOCKS
+:MATERIALSLIB
 if exist %mcpdir%\src GOTO :COPYSRC
-GOTO :LBFAIL
+GOTO :MLFAIL
 
 :COPYSRC
 if not exist "%mcpdir%\src-work" GOTO :CREATESRC
-GOTO :LBFAIL
+GOTO :MLFAIL
 
 :CREATESRC
 mkdir "%mcpdir%\src-work"
 xcopy "%mcpdir%\src\*.*" "%mcpdir%\src-work\" /S
-if exist "%mcpdir%\src-work" GOTO :COPYLB
-GOTO :LBFAIL
+if exist "%mcpdir%\src-work" GOTO :MLCOPY
+GOTO :MLFAIL
 
-:COPYLB
+:MLCOPY
 xcopy "%slimelib%\SV-common\*.*" "%mcpdir%\src\minecraft\" /S
-xcopy "%littleblocks%\LB-source\*.*" "%mcpdir%\src\minecraft\" /S
+xcopy "%matlib%\ML-source\*.*" "%mcpdir%\src\minecraft\" /S
 pause
 call %mcpdir%\recompile.bat
 call %mcpdir%\reobfuscate.bat
@@ -38,15 +38,15 @@ echo Recompile and Reobf Completed Successfully
 pause
 
 :REPACKAGE
-if not exist "%mcpdir%\reobf" GOTO :LBFAIL
-if exist "%packagedir%\LittleBlocks" (
-del "%packagedir%\LittleBlocks\*.*" /S /Q
-rmdir "%packagedir%\LittleBlocks" /S /Q
+if not exist "%mcpdir%\reobf" GOTO :MLFAIL
+if exist "%packagedir%\MaterialsLib" (
+del "%packagedir%\MaterialsLib\*.*" /S /Q
+rmdir "%packagedir%\MaterialsLib" /S /Q
 )
-mkdir "%packagedir%\LittleBlocks\slimevoid\littleblocks"
-xcopy "%mcpdir%\reobf\minecraft\slimevoid\littleblocks\*.*" "%packagedir%\LittleBlocks\slimevoid\littleblocks\" /S
-xcopy "%littleblocks%\LB-resources\*.*" "%packagedir%\LittleBlocks\" /S
-echo "LittleBlocks Packaged Successfully
+mkdir "%packagedir%\MaterialsLib\slimevoid\materialslib"
+xcopy "%mcpdir%\reobf\minecraft\slimevoid\materialslib\*.*" "%packagedir%\MaterialsLib\slimevoid\materialslib\" /S
+xcopy "%matlib%\ML-resources\*.*" "%packagedir%\MaterialsLib\" /S
+echo "Materials Library Packaged Successfully
 pause
 ren "%mcpdir%\src" src-old
 echo Recompiled Source folder renamed
@@ -59,15 +59,15 @@ del "%mcpdir%\reobf" /S /Q
 if exist "%mcpdir%\src-old" rmdir "%mcpdir%\src-old" /S /Q
 if exist "%mcpdir%\reobf" rmdir "%mcpdir%\reobf" /S /Q
 echo Folder structure reset
-GOTO :LBCOMPLETE
+GOTO :MLCOMPLETE
 
-:LBFAIL
-echo Could not compile littleblocks
-GOTO :LBEND
+:MLFAIL
+echo Could not compile Materials Library
+GOTO :MLEND
 
-:LBCOMPLETE
-echo Littleblocks completed compile successfully
-GOTO :LBEND
+:MLCOMPLETE
+echo Materials Library completed compile successfully
+GOTO :MLEND
 
-:LBEND
+:MLEND
 pause
