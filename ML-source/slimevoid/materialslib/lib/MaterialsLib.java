@@ -11,6 +11,7 @@ import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import slimevoid.materialslib.api.IMaterialHandler;
+
 import com.slimevoid.library.util.helpers.ItemHelper;
 
 public class MaterialsLib {
@@ -170,11 +171,19 @@ public class MaterialsLib {
 
 	public static void addMaterial(Block bl, int md, String desc) {
 		ItemStack ist = new ItemStack(bl, 1, md);
+		addMaterial(ist,
+					desc);
+	}
+
+	private static void addMaterial(ItemStack ist, String desc) {
 		materials.add(ist);
+		if (desc == null) {
+			desc = ist.getDisplayName();
+		}
 		descs.add(desc);
 		materialIndex.put(	Arrays.asList(new Integer[] {
-									Integer.valueOf(bl.blockID),
-									Integer.valueOf(md) }),
+									Integer.valueOf(ist.itemID),
+									Integer.valueOf(ist.getItemDamage()) }),
 							Integer.valueOf(materials.size()));
 		IMaterialHandler imh;
 		for (Iterator i$ = materialHandlers.iterator(); i$.hasNext(); imh.addMaterialReference(materials.size())) {
