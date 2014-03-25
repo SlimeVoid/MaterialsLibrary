@@ -6,7 +6,7 @@ import slimevoid.materialslib.client.network.ClientPacketHandler;
 import slimevoid.materialslib.network.handler.PacketMaterialHandler;
 import slimevoid.materialslib.network.packet.PacketMaterialList;
 import slimevoid.materialslib.network.packet.executor.PacketMaterialListExecutor;
-import slimevoidlib.network.PacketIds;
+import com.slimevoid.library.network.PacketIds;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;

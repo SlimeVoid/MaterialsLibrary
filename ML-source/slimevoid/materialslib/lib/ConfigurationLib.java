@@ -4,8 +4,8 @@ import java.io.File;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StringTranslate;
 import net.minecraftforge.common.Configuration;
+import cpw.mods.fml.common.FMLCommonHandler;
 
 public class ConfigurationLib {
 	private static Configuration	configuration;
@@ -50,9 +50,7 @@ public class ConfigurationLib {
 	public static void reInitMaterials() {
 		initMaterials();
 		try {
-			// FMLCommonHandler.instance().updateResourcePackList();
-			StringTranslate.getInstance().setLanguage(	StringTranslate.getInstance().currentLanguage,
-														true);
+			FMLCommonHandler.instance().updateResourcePackList();
 		} catch (Exception ex) {
 		}
 	}

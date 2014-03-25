@@ -7,9 +7,11 @@ import java.util.Map;
 
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
-import slimevoidlib.data.Logger;
-import slimevoidlib.data.LoggerSlimevoidLib;
-import slimevoidlib.network.handlers.SubPacketHandler;
+
+import com.slimevoid.library.data.Logger;
+import com.slimevoid.library.data.LoggerSlimevoidLib;
+import com.slimevoid.library.network.handlers.SubPacketHandler;
+
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 

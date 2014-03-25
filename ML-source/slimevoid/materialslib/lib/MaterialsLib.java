@@ -11,7 +11,7 @@ import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import slimevoid.materialslib.api.IMaterialHandler;
-import slimevoidlib.util.helpers.ItemHelper;
+import com.slimevoid.library.util.helpers.ItemHelper;
 
 public class MaterialsLib {
 

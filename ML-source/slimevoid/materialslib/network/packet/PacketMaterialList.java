@@ -2,9 +2,9 @@ package slimevoid.materialslib.network.packet;
 
 import net.minecraft.world.World;
 import slimevoid.materialslib.lib.CoreLib;
-import slimevoidlib.network.PacketIds;
-import slimevoidlib.network.PacketPayload;
-import slimevoidlib.network.PacketUpdate;
+import com.slimevoid.library.network.PacketIds;
+import com.slimevoid.library.network.PacketPayload;
+import com.slimevoid.library.network.PacketUpdate;
 
 public class PacketMaterialList extends PacketUpdate {
 

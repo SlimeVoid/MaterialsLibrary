@@ -11,11 +11,13 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.network.Player;
 import slimevoid.materialslib.lib.PacketLib;
 import slimevoid.materialslib.network.CommonPacketHandler;
-import slimevoidlib.ICommonProxy;
-import slimevoidlib.IPacketHandling;
+
+import com.slimevoid.library.ICommonProxy;
+import com.slimevoid.library.IPacketHandling;
+
+import cpw.mods.fml.common.network.Player;
 
 public class CommonProxy implements ICommonProxy {
 
@@ -49,7 +51,13 @@ public class CommonProxy implements ICommonProxy {
 	}
 
 	@Override
-	public void registerTickHandler() {
+	public void registerTickHandlers() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void registerEventHandlers() {
 		// TODO Auto-generated method stub
 
 	}

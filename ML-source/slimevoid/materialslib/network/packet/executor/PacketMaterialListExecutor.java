@@ -4,8 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import slimevoid.materialslib.lib.ConfigurationLib;
 import slimevoid.materialslib.network.packet.PacketMaterialList;
-import slimevoidlib.IPacketExecutor;
-import slimevoidlib.network.PacketUpdate;
+import com.slimevoid.library.IPacketExecutor;
+import com.slimevoid.library.network.PacketUpdate;
 
 public class PacketMaterialListExecutor implements IPacketExecutor {
 
