@@ -1,3 +1,21 @@
-/bin
-/jars
-/lib
+# mac stuff
+.DS_Store
+
+# gradle stuff
+build
+.gradle
+upload.bat
+
+# eclipse stuff
+.classpath
+.project
+.settings
+eclipse
+bin
+
+# Idea stuff
+.idea
+*.iml
+
+# run configuration
+run
